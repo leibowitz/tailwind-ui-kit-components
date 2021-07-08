@@ -1,4 +1,4 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ['babel-plugin-postcss']
+  "plugins": ["babel-plugin-postcss", "inline-react-svg"]
 }
