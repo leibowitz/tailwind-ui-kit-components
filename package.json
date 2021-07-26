@@ -28,6 +28,7 @@
     "babel-plugin-postcss": "^1.1.0",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "twin.macro": "^2.6.2"
   }
 }
