@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import tw from 'twin.macro';
 
 import MenuSvg from '../../static/menu.svg';
@@ -8,6 +8,7 @@ import ItemLink from './NavItemLink';
 import Company from './Company';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import DarkContext, { BoolProvider as DarkProvider } from './Context';
 
 const DesktopNav = () => (
   <>
@@ -68,16 +69,19 @@ const MobileNav = () => (
   </nav>
 );
 
-const MenuOpenButton = ({ setIsMenuOpen }) => (
-  <button
-    aria-label="Open Menu"
-    title="Open Menu"
-    tw="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
-    onClick={() => setIsMenuOpen(true)}
-  >
-    <MenuSvg tw="w-5 text-gray-600" />
-  </button>
-);
+const MenuOpenButton = ({ setIsMenuOpen }) => {
+  const dark = useContext(DarkContext);
+  return (
+    <button
+      aria-label="Open Menu"
+      title="Open Menu"
+      css={[tw`p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline`, !dark && tw`hover:bg-deep-purple-50 focus:bg-deep-purple-50`]}
+      onClick={() => setIsMenuOpen(true)}
+    >
+      <MenuSvg tw="w-5 text-gray-600" />
+    </button>
+  );
+};
 
 const MenuCloseButton = ({ setIsMenuOpen }) => (
   <button
@@ -90,7 +94,7 @@ const MenuCloseButton = ({ setIsMenuOpen }) => (
   </button>
 );
 
-const Nav = () => {
+const NavContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -117,6 +121,16 @@ const Nav = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const Nav = ({ dark }) => {
+  return (
+    <DarkProvider value={dark}>
+      <div css={[dark && tw`bg-gray-900`]}>
+        <NavContent />
+      </div>
+    </DarkProvider>
   );
 };
 
