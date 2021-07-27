@@ -66,6 +66,28 @@ const MobileNav = () => (
   </nav>
 );
 
+const MenuOpenButton = ({ setIsMenuOpen }) => (
+  <button
+    aria-label="Open Menu"
+    title="Open Menu"
+    tw="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
+    onClick={() => setIsMenuOpen(true)}
+  >
+    <MenuSvg tw="w-5 text-gray-600" />
+  </button>
+);
+
+const MenuCloseButton = ({ setIsMenuOpen }) => (
+  <button
+    aria-label="Close Menu"
+    title="Close Menu"
+    tw="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+    onClick={() => setIsMenuOpen(false)}
+  >
+    <CloseSvg tw="w-5 text-gray-600" />
+  </button>
+);
+
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -74,14 +96,7 @@ const Nav = () => {
       <div tw="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
         <DesktopNav />
         <div tw="ml-auto lg:hidden">
-          <button
-            aria-label="Open Menu"
-            title="Open Menu"
-            tw="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <MenuSvg tw="w-5 text-gray-600" />
-          </button>
+          <MenuOpenButton setIsMenuOpen={setIsMenuOpen} />
           {isMenuOpen && (
             <div tw="absolute top-0 left-0 w-full">
               <div tw="p-5 bg-white border rounded shadow-sm">
@@ -90,14 +105,7 @@ const Nav = () => {
                     <Company />
                   </div>
                   <div>
-                    <button
-                      aria-label="Close Menu"
-                      title="Close Menu"
-                      tw="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <CloseSvg tw="w-5 text-gray-600" />
-                    </button>
+                    <MenuCloseButton setIsMenuOpen={setIsMenuOpen} />
                   </div>
                 </div>
                 <MobileNav />
