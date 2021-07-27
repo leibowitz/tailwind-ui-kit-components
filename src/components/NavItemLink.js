@@ -3,15 +3,19 @@ import { useContext } from 'react';
 
 import DarkContext from './Context';
 
-const ItemLink = ({title, children}) => {
+const ItemLink = ({title, large, button, children}) => {
   const dark = useContext(DarkContext);
+
+  const textClasses = [tw`font-medium tracking-wide transition-colors duration-200 no-underline`, dark ? tw`text-gray-100 hover:text-teal-accent-400` : tw`text-gray-700 hover:text-deep-purple-accent-400`];
+
+  const buttonClasses = [tw`inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none no-underline`, large && tw`w-full`];
 
   return (
     <a
       href="/"
       aria-label={title}
       title={title}
-      css={[tw`font-medium tracking-wide transition-colors duration-200 no-underline`, dark ? tw`text-gray-100 hover:text-teal-accent-400` : tw`text-gray-700 hover:text-deep-purple-accent-400`]}
+      css={button ? buttonClasses : textClasses}
     >
       {children}
     </a>
