@@ -96,6 +96,7 @@ const MenuCloseButton = ({ setIsMenuOpen }) => (
 
 const NavContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dark = useContext(DarkContext);
 
   return (
     <div tw="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -105,7 +106,7 @@ const NavContent = () => {
           <MenuOpenButton setIsMenuOpen={setIsMenuOpen} />
           {isMenuOpen && (
             <div tw="absolute top-0 left-0 w-full">
-              <div tw="p-5 bg-white border rounded shadow-sm">
+              <div css={[tw`p-5 bg-white border rounded shadow-sm`, dark && tw`bg-gray-900`]}>
                 <div tw="flex items-center justify-between mb-4">
                   <div>
                     <Company />
