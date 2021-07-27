@@ -10,32 +10,34 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 
 const DesktopNav = () => (
-  <ul tw="flex items-center hidden space-x-8 lg:flex">
-    <li>
-      <ItemLink title="Our product">
-        Product
-      </ItemLink>
-    </li>
-    <li>
-      <ItemLink title="Features">
-        Features
-      </ItemLink>
-    </li>
-    <li>
-      <ItemLink title="Product pricing">
-        Pricing
-      </ItemLink>
-    </li>
-  </ul>
-  <Company large />
-  <ul tw="flex items-center hidden ml-auto space-x-8 lg:flex">
-    <li>
-      <SignIn />
-    </li>
-    <li>
-      <SignUp />
-    </li>
-  </ul>
+  <>
+    <ul tw="flex items-center hidden space-x-8 lg:flex">
+      <li>
+        <ItemLink title="Our product">
+          Product
+        </ItemLink>
+      </li>
+      <li>
+        <ItemLink title="Features">
+          Features
+        </ItemLink>
+      </li>
+      <li>
+        <ItemLink title="Product pricing">
+          Pricing
+        </ItemLink>
+      </li>
+    </ul>
+    <Company large />
+    <ul tw="flex items-center hidden ml-auto space-x-8 lg:flex">
+      <li>
+        <SignIn />
+      </li>
+      <li>
+        <SignUp />
+      </li>
+    </ul>
+  </>
 );
 
 const MobileNav = () => (
