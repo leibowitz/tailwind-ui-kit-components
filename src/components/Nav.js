@@ -11,7 +11,7 @@ import SignUp from './SignUp';
 
 const DesktopNav = () => (
   <>
-    <ul tw="flex items-center hidden space-x-8 lg:flex">
+    <ul tw="flex items-center hidden space-x-8 lg:flex list-none">
       <li>
         <ItemLink title="Our product">
           Product
@@ -29,7 +29,7 @@ const DesktopNav = () => (
       </li>
     </ul>
     <Company large />
-    <ul tw="flex items-center hidden ml-auto space-x-8 lg:flex">
+    <ul tw="flex items-center hidden ml-auto space-x-8 lg:flex list-none">
       <li>
         <SignIn />
       </li>
@@ -42,7 +42,7 @@ const DesktopNav = () => (
 
 const MobileNav = () => (
   <nav>
-    <ul tw="space-y-4">
+    <ul tw="space-y-4 list-none">
       <li>
         <ItemLink title="Our product">
           Product
