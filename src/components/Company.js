@@ -7,7 +7,7 @@ const Company = ({ large }) => (
     href="/"
     aria-label="Company"
     title="Company"
-    css={[tw`inline-flex items-center`, large && tw`lg:mx-auto`]}
+    css={[tw`inline-flex items-center no-underline`, large && tw`lg:mx-auto`]}
   >
     <CompanyLogoSvg tw="w-8 text-deep-purple-accent-400" />
     <span tw="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
