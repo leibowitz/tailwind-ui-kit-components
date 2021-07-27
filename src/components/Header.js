@@ -1,22 +1,26 @@
+import { useContext } from 'react';
+
 import HeaderContainer from './HeaderContainer';
 import HeaderContent from './HeaderContent';
 import CallToAction from './CallToAction';
+import AccentContext, { BoolProvider as AccentProvider } from './Context';
 
-const HeaderBlocks = ({ accent }) => (
+const HeaderBlocks = () => (
   <div tw="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div tw="max-w-xl sm:mx-auto lg:max-w-2xl">
       <div tw="flex flex-col mb-16 sm:text-center sm:mb-0">
         <a href="/" tw="mb-6 sm:mx-auto">
-          <HeaderContainer accent={accent} />
+          <HeaderContainer />
         </a>
-        <HeaderContent accent={accent} />
-        <CallToAction accent={accent} />
+        <HeaderContent />
+        <CallToAction />
       </div>
     </div>
   </div>
 );
 
-const HeaderWrapper = ({ accent, children }) => {
+const HeaderWrapper = ({ children }) => {
+  const accent = useContext(AccentContext);
   if (accent) {
     return (
       <div tw="bg-deep-purple-accent-700">
@@ -32,9 +36,11 @@ const HeaderWrapper = ({ accent, children }) => {
 };
 
 const Header = ({ accent }) => (
-  <HeaderWrapper accent={accent}>
-      <HeaderBlocks accent={accent} />
-  </HeaderWrapper>
+  <AccentProvider value={accent}>
+    <HeaderWrapper>
+      <HeaderBlocks />
+    </HeaderWrapper>
+  </AccentProvider>
 );
 
 export default Header;
