@@ -10,24 +10,16 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import DarkContext, { BoolProvider as DarkProvider } from './Context';
 
-const DesktopNav = () => (
+const DesktopNav = ({ links }) => (
   <>
     <ul tw="flex items-center hidden space-x-8 lg:flex list-none">
-      <li>
-        <ItemLink title="Our product">
-          Product
-        </ItemLink>
-      </li>
-      <li>
-        <ItemLink title="Features">
-          Features
-        </ItemLink>
-      </li>
-      <li>
-        <ItemLink title="Product pricing">
-          Pricing
-        </ItemLink>
-      </li>
+      {links.map((item, index) => (
+        <li>
+          <ItemLink title={item.title}>
+            {item.name}
+          </ItemLink>
+        </li>
+      ))}
     </ul>
     <Company large />
     <ul tw="flex items-center hidden ml-auto space-x-8 lg:flex list-none">
@@ -41,24 +33,16 @@ const DesktopNav = () => (
   </>
 );
 
-const MobileNav = () => (
+const MobileNav = ({ links }) => (
   <nav>
     <ul tw="space-y-4 list-none">
-      <li>
-        <ItemLink title="Our product">
-          Product
-        </ItemLink>
-      </li>
-      <li>
-        <ItemLink title="Features">
-          Features
-        </ItemLink>
-      </li>
-      <li>
-        <ItemLink title="Product pricing">
-          Pricing
-        </ItemLink>
-      </li>
+      {links.map((item, index) => (
+        <li>
+          <ItemLink title={item.title}>
+            {item.name}
+          </ItemLink>
+        </li>
+      ))}
       <li>
         <SignIn />
       </li>
@@ -94,14 +78,14 @@ const MenuCloseButton = ({ setIsMenuOpen }) => (
   </button>
 );
 
-const NavContent = () => {
+const NavContent = ({ links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dark = useContext(DarkContext);
 
   return (
     <div tw="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div tw="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
-        <DesktopNav />
+        <DesktopNav links={links} />
         <div tw="ml-auto lg:hidden">
           <MenuOpenButton setIsMenuOpen={setIsMenuOpen} />
           {isMenuOpen && (
@@ -115,7 +99,7 @@ const NavContent = () => {
                     <MenuCloseButton setIsMenuOpen={setIsMenuOpen} />
                   </div>
                 </div>
-                <MobileNav />
+                <MobileNav links={links} />
               </div>
             </div>
           )}
@@ -125,11 +109,11 @@ const NavContent = () => {
   );
 };
 
-const Nav = ({ dark }) => {
+const Nav = ({ links, dark }) => {
   return (
     <DarkProvider value={dark}>
       <div css={[dark && tw`bg-gray-900`]}>
-        <NavContent />
+        <NavContent links={links} />
       </div>
     </DarkProvider>
   );

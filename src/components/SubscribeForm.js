@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import SubscribeScroll from './SubscribeScroll';
 import AccentContext from './Context';
 
-const SubscribeForm = () => {
+const SubscribeForm = ({ note }) => {
   const accent = useContext(AccentContext);
   return (
     <>
@@ -23,8 +23,7 @@ const SubscribeForm = () => {
         </a>
       </form>
       <p css={[tw`max-w-md mb-10 text-xs tracking-wide sm:text-sm sm:mx-auto md:mb-16`, accent ? tw`text-indigo-100` : tw`text-gray-500`]}>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium doloremque.
+        {note}
       </p>
       <SubscribeScroll />
     </>

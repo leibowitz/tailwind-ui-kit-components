@@ -5,14 +5,14 @@ import HeaderContent from './HeaderContent';
 import CallToAction from './CallToAction';
 import AccentContext, { BoolProvider as AccentProvider } from './Context';
 
-const HeaderBlocks = () => (
+const HeaderBlocks = ({ title, text }) => (
   <div tw="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div tw="max-w-xl sm:mx-auto lg:max-w-2xl">
       <div tw="flex flex-col mb-16 sm:text-center sm:mb-0">
         <a href="/" tw="mb-6 sm:mx-auto">
           <HeaderContainer />
         </a>
-        <HeaderContent />
+        <HeaderContent title={title} text={text} />
         <CallToAction />
       </div>
     </div>
@@ -35,10 +35,10 @@ const HeaderWrapper = ({ children }) => {
   );
 };
 
-const Header = ({ accent }) => (
+const Header = ({ title, text, accent }) => (
   <AccentProvider value={accent}>
     <HeaderWrapper>
-      <HeaderBlocks />
+      <HeaderBlocks title={title} text={text} />
     </HeaderWrapper>
   </AccentProvider>
 );
