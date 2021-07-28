@@ -10,7 +10,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import DarkContext, { BoolProvider as DarkProvider } from './Context';
 
-const DesktopNav = ({ links }) => (
+const DesktopNav = ({ name, links }) => (
   <>
     <ul tw="flex items-center hidden space-x-8 lg:flex list-none">
       {links.map((item, index) => (
@@ -21,7 +21,7 @@ const DesktopNav = ({ links }) => (
         </li>
       ))}
     </ul>
-    <Company large />
+    <Company name={name} large />
     <ul tw="flex items-center hidden ml-auto space-x-8 lg:flex list-none">
       <li>
         <SignIn />
@@ -78,14 +78,14 @@ const MenuCloseButton = ({ setIsMenuOpen }) => (
   </button>
 );
 
-const NavContent = ({ links }) => {
+const NavContent = ({ name, links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dark = useContext(DarkContext);
 
   return (
     <div tw="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div tw="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
-        <DesktopNav links={links} />
+        <DesktopNav name={name} links={links} />
         <div tw="ml-auto lg:hidden">
           <MenuOpenButton setIsMenuOpen={setIsMenuOpen} />
           {isMenuOpen && (
@@ -93,7 +93,7 @@ const NavContent = ({ links }) => {
               <div css={[tw`p-5 bg-white border rounded shadow-sm`, dark && tw`bg-gray-900`]}>
                 <div tw="flex items-center justify-between mb-4">
                   <div>
-                    <Company />
+                    <Company name={name} />
                   </div>
                   <div>
                     <MenuCloseButton setIsMenuOpen={setIsMenuOpen} />
@@ -109,11 +109,11 @@ const NavContent = ({ links }) => {
   );
 };
 
-const Nav = ({ links, dark }) => {
+const Nav = ({ name, links, dark }) => {
   return (
     <DarkProvider value={dark}>
       <div css={[dark && tw`bg-gray-900`]}>
-        <NavContent links={links} />
+        <NavContent name={name} links={links} />
       </div>
     </DarkProvider>
   );

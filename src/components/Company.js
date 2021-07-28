@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import DarkContext from './Context';
 import CompanyLogoSvg from '../../static/company-logo.svg';
 
-const Company = ({ large }) => {
+const Company = ({ name, large }) => {
   const dark = useContext(DarkContext);
 
   return (
@@ -16,7 +16,7 @@ const Company = ({ large }) => {
     >
       <CompanyLogoSvg css={[tw`w-8`, dark ? tw`text-teal-accent-400` : tw`text-deep-purple-accent-400`]} />
       <span css={[tw`ml-2 text-xl font-bold tracking-wide uppercase`, dark ? tw`text-gray-100` : tw`text-gray-800`]}>
-        Company
+        {name}
       </span>
     </a>
   );
