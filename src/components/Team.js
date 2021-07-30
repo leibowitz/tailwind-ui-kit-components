@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Person = (person) => {
   return (
     <div>
@@ -17,6 +19,14 @@ const Person = (person) => {
   );
 };
 
+Person.propTypes = {
+  person: PropTypes.shape({
+    name: PropTypes.string,
+    role: PropTypes.string,
+    description: PropTypes.string
+  })
+};
+
 const Team = ({ peoples }) => {
   return (
     <div tw="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -27,6 +37,14 @@ const Team = ({ peoples }) => {
       </div>
     </div>
   );
+};
+
+Team.propTypes = {
+  peoples: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    role: PropTypes.string,
+    description: PropTypes.string
+  }))
 };
 
 export default Team;

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import PropTypes from 'prop-types';
 
 import HeaderContainer from "./HeaderContainer";
 import HeaderContent from "./HeaderContent";
@@ -19,12 +20,21 @@ const HeaderBlocks = ({ title, text }) => (
   </div>
 );
 
+HeaderBlocks.propTypes = {
+  title: PropTypes.string,
+  text: PropTypes.string
+};
+
 const HeaderWrapper = ({ children }) => {
   const accent = useContext(AccentContext);
   if (accent) {
     return <div tw="bg-deep-purple-accent-700">{children}</div>;
   }
   return <>{children}</>;
+};
+
+HeaderWrapper.propTypes = {
+  children: PropTypes.node
 };
 
 const Header = ({ title, text, accent }) => (
@@ -34,5 +44,11 @@ const Header = ({ title, text, accent }) => (
     </HeaderWrapper>
   </AccentProvider>
 );
+
+Header.propTypes = {
+  title: PropTypes.string,
+  text: PropTypes.string,
+  accent: PropTypes.bool
+};
 
 export default Header;

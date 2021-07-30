@@ -1,4 +1,5 @@
 import tw from "twin.macro";
+import PropTypes from 'prop-types';
 import { useContext } from "react";
 
 import DarkContext from "./Context";
@@ -28,6 +29,13 @@ const ItemLink = ({ title, large, button, children }) => {
       {children}
     </a>
   );
+};
+
+ItemLink.propTypes = {
+  title: PropTypes.string,
+  large: PropTypes.bool,
+  button: PropTypes.bool,
+  children: PropTypes.node
 };
 
 export default ItemLink;

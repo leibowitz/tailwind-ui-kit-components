@@ -1,4 +1,5 @@
 import tw from "twin.macro";
+import PropTypes from 'prop-types';
 import { BoolProvider as AccentProvider } from "./Context";
 
 import SubscribeHeader from "./SubscribeHeader";
@@ -26,6 +27,13 @@ const Subscribe = ({ title, text, note, accent }) => {
       </div>
     </AccentProvider>
   );
+};
+
+Subscribe.propTypes = {
+  title: PropTypes.string,
+  text: PropTypes.string,
+  note: PropTypes.string,
+  accent: PropTypes.bool
 };
 
 export default Subscribe;

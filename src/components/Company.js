@@ -1,4 +1,5 @@
 import tw from "twin.macro";
+import PropTypes from 'prop-types';
 import { useContext } from "react";
 
 import DarkContext from "./Context";
@@ -30,6 +31,11 @@ const Company = ({ name, large }) => {
       </span>
     </a>
   );
+};
+
+Company.propTypes = {
+  name: PropTypes.string,
+  large: PropTypes.bool
 };
 
 export default Company;

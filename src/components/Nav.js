@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PropTypes from 'prop-types';
 import tw from "twin.macro";
 
 import MenuSvg from "../../static/menu.svg";
@@ -31,6 +32,14 @@ const DesktopNav = ({ name, links }) => (
   </>
 );
 
+DesktopNav.propTypes = {
+  name: PropTypes.string,
+  links: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    name: PropTypes.string
+  }))
+};
+
 const MobileNav = ({ links }) => (
   <nav>
     <ul tw="space-y-4 list-none">
@@ -49,6 +58,13 @@ const MobileNav = ({ links }) => (
   </nav>
 );
 
+MobileNav.propTypes = {
+  links: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    name: PropTypes.string
+  }))
+};
+
 const MenuOpenButton = ({ setIsMenuOpen }) => {
   const dark = useContext(DarkContext);
   return (
@@ -66,6 +82,10 @@ const MenuOpenButton = ({ setIsMenuOpen }) => {
   );
 };
 
+MenuOpenButton.propTypes = {
+  setIsMenuOpen: PropTypes.bool
+};
+
 const MenuCloseButton = ({ setIsMenuOpen }) => (
   <button
     aria-label="Close Menu"
@@ -76,6 +96,10 @@ const MenuCloseButton = ({ setIsMenuOpen }) => (
     <CloseSvg tw="w-5 text-gray-600" />
   </button>
 );
+
+MenuCloseButton.propTypes = {
+  setIsMenuOpen: PropTypes.bool
+};
 
 const NavContent = ({ name, links }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -113,6 +137,14 @@ const NavContent = ({ name, links }) => {
   );
 };
 
+NavContent.propTypes = {
+  name: PropTypes.string,
+  links: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    name: PropTypes.string
+  }))
+};
+
 const Nav = ({ name, links, dark }) => {
   return (
     <DarkProvider value={dark}>
@@ -121,6 +153,15 @@ const Nav = ({ name, links, dark }) => {
       </div>
     </DarkProvider>
   );
+};
+
+Nav.propTypes = {
+  name: PropTypes.string,
+  links: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    name: PropTypes.string
+  })),
+  dark: PropTypes.bool
 };
 
 export default Nav;

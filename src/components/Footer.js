@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import PropTypes from 'prop-types';
 import tw from "twin.macro";
 
 import CompanyLogoSvg from "../../static/company-logo.svg";
@@ -21,6 +22,10 @@ const Title = ({ children }) => {
   );
 };
 
+Title.propTypes = {
+  children: PropTypes.node
+};
+
 const Item = ({ children }) => {
   const dark = useContext(Context);
   return (
@@ -40,6 +45,10 @@ const Item = ({ children }) => {
   );
 };
 
+Item.propTypes = {
+  children: PropTypes.node
+};
+
 const SocialLink = ({ children }) => {
   const dark = useContext(Context);
   return (
@@ -55,6 +64,10 @@ const SocialLink = ({ children }) => {
       {children}
     </a>
   );
+};
+
+SocialLink.propTypes = {
+  children: PropTypes.node
 };
 
 const FooterEnd = ({ name }) => {
@@ -79,6 +92,10 @@ const FooterEnd = ({ name }) => {
   );
 };
 
+FooterEnd.propTypes = {
+  name: PropTypes.string
+};
+
 const CompanyLink = ({ name }) => {
   const dark = useContext(Context);
   return (
@@ -101,6 +118,10 @@ const CompanyLink = ({ name }) => {
   );
 };
 
+CompanyLink.propTypes = {
+  name: PropTypes.string
+};
+
 const AboutCompany = ({ name, description }) => {
   const dark = useContext(Context);
   return (
@@ -113,6 +134,11 @@ const AboutCompany = ({ name, description }) => {
       </div>
     </div>
   );
+};
+
+AboutCompany.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string
 };
 
 const Footer = ({ company, name, description, categories, dark }) => {
@@ -140,6 +166,14 @@ const Footer = ({ company, name, description, categories, dark }) => {
       </div>
     </BoolProvider>
   );
+};
+
+Footer.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  company: PropTypes.string,
+  categories: PropTypes.array,
+  dark: PropTypes.bool
 };
 
 export default Footer;

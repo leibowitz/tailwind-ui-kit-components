@@ -1,4 +1,5 @@
 import tw from "twin.macro";
+import PropTypes from 'prop-types';
 import { useContext } from "react";
 
 import SubscribeScroll from "./SubscribeScroll";
@@ -43,6 +44,10 @@ const SubscribeForm = ({ note }) => {
       <SubscribeScroll />
     </>
   );
+};
+
+SubscribeForm.propTypes = {
+  note: PropTypes.string
 };
 
 export default SubscribeForm;
