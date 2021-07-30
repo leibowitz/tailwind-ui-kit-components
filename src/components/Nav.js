@@ -15,7 +15,7 @@ const DesktopNav = ({ name, links }) => (
   <>
     <ul tw="flex items-center hidden space-x-8 lg:flex list-none">
       {links.map((item, index) => (
-        <li>
+        <li key={index}>
           <ItemLink title={item.title}>{item.name}</ItemLink>
         </li>
       ))}
@@ -44,7 +44,7 @@ const MobileNav = ({ links }) => (
   <nav>
     <ul tw="space-y-4 list-none">
       {links.map((item, index) => (
-        <li>
+        <li key={index}>
           <ItemLink title={item.title}>{item.name}</ItemLink>
         </li>
       ))}
