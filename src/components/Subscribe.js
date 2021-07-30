@@ -1,5 +1,5 @@
 import tw from 'twin.macro';
-import AccentContext, { BoolProvider as AccentProvider } from './Context';
+import { BoolProvider as AccentProvider } from './Context';
 
 import SubscribeHeader from './SubscribeHeader';
 import SubscribeTitle from './SubscribeTitle';
