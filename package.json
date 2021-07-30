@@ -4,6 +4,7 @@
   "description": "General usage react components styled using tailwindcss",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "eslint src",
     "build": "npx babel src --out-dir dist --copy-files",
     "start": "npx babel src --watch --out-dir dist --copy-files",
     "test": "echo \"Error: no test specified\" && exit 1"
