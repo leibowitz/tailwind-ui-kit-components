@@ -1,4 +1,4 @@
-import HightLightSvg from '../../static/highlight.svg';
+import HightLightSvg from "../../static/highlight.svg";
 
 const SubscribeHeader = () => (
   <div tw="absolute inset-x-0 bottom-0">

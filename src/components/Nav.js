@@ -1,23 +1,21 @@
-import React, { useState, useContext } from 'react';
-import tw from 'twin.macro';
+import React, { useState, useContext } from "react";
+import tw from "twin.macro";
 
-import MenuSvg from '../../static/menu.svg';
-import CloseSvg from '../../static/close.svg';
+import MenuSvg from "../../static/menu.svg";
+import CloseSvg from "../../static/close.svg";
 
-import ItemLink from './NavItemLink';
-import Company from './Company';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import DarkContext, { BoolProvider as DarkProvider } from './Context';
+import ItemLink from "./NavItemLink";
+import Company from "./Company";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+import DarkContext, { BoolProvider as DarkProvider } from "./Context";
 
 const DesktopNav = ({ name, links }) => (
   <>
     <ul tw="flex items-center hidden space-x-8 lg:flex list-none">
       {links.map((item, index) => (
         <li>
-          <ItemLink title={item.title}>
-            {item.name}
-          </ItemLink>
+          <ItemLink title={item.title}>{item.name}</ItemLink>
         </li>
       ))}
     </ul>
@@ -38,9 +36,7 @@ const MobileNav = ({ links }) => (
     <ul tw="space-y-4 list-none">
       {links.map((item, index) => (
         <li>
-          <ItemLink title={item.title}>
-            {item.name}
-          </ItemLink>
+          <ItemLink title={item.title}>{item.name}</ItemLink>
         </li>
       ))}
       <li>
@@ -59,7 +55,10 @@ const MenuOpenButton = ({ setIsMenuOpen }) => {
     <button
       aria-label="Open Menu"
       title="Open Menu"
-      css={[tw`p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline`, !dark && tw`hover:bg-deep-purple-50 focus:bg-deep-purple-50`]}
+      css={[
+        tw`p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline`,
+        !dark && tw`hover:bg-deep-purple-50 focus:bg-deep-purple-50`,
+      ]}
       onClick={() => setIsMenuOpen(true)}
     >
       <MenuSvg tw="w-5 text-gray-600" />
@@ -90,7 +89,12 @@ const NavContent = ({ name, links }) => {
           <MenuOpenButton setIsMenuOpen={setIsMenuOpen} />
           {isMenuOpen && (
             <div tw="absolute top-0 left-0 w-full">
-              <div css={[tw`p-5 bg-white border rounded shadow-sm`, dark && tw`bg-gray-900`]}>
+              <div
+                css={[
+                  tw`p-5 bg-white border rounded shadow-sm`,
+                  dark && tw`bg-gray-900`,
+                ]}
+              >
                 <div tw="flex items-center justify-between mb-4">
                   <div>
                     <Company name={name} />

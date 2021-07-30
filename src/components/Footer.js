@@ -1,20 +1,25 @@
-import { useContext } from 'react';
-import tw from 'twin.macro';
+import { useContext } from "react";
+import tw from "twin.macro";
 
-import CompanyLogoSvg from '../../static/company-logo.svg';
-import TwitterSvg from '../../static/twitter.svg';
-import InstagramSvg from '../../static/instagram.svg';
-import FacebookSvg from '../../static/facebook.svg';
-import Context, { BoolProvider } from './Context';
+import CompanyLogoSvg from "../../static/company-logo.svg";
+import TwitterSvg from "../../static/twitter.svg";
+import InstagramSvg from "../../static/instagram.svg";
+import FacebookSvg from "../../static/facebook.svg";
+import Context, { BoolProvider } from "./Context";
 
 const Title = ({ children }) => {
   const dark = useContext(Context);
   return (
-    <p css={[tw`font-semibold tracking-wide`, dark ? tw`text-gray-300` : tw`text-gray-800`]}>
+    <p
+      css={[
+        tw`font-semibold tracking-wide`,
+        dark ? tw`text-gray-300` : tw`text-gray-800`,
+      ]}
+    >
       {children}
     </p>
   );
-}
+};
 
 const Item = ({ children }) => {
   const dark = useContext(Context);
@@ -22,20 +27,30 @@ const Item = ({ children }) => {
     <li>
       <a
         href="/"
-        css={[tw`transition-colors duration-300`, dark ? tw`text-gray-500 hover:text-teal-accent-400` : tw`text-gray-600 hover:text-deep-purple-accent-400`]}
+        css={[
+          tw`transition-colors duration-300`,
+          dark
+            ? tw`text-gray-500 hover:text-teal-accent-400`
+            : tw`text-gray-600 hover:text-deep-purple-accent-400`,
+        ]}
       >
         {children}
       </a>
     </li>
   );
-}
+};
 
 const SocialLink = ({ children }) => {
   const dark = useContext(Context);
   return (
     <a
       href="/"
-      css={[tw`transition-colors duration-300`, dark ? tw`text-gray-500 hover:text-teal-accent-400` : tw`text-gray-500 hover:text-deep-purple-accent-400`]}
+      css={[
+        tw`transition-colors duration-300`,
+        dark
+          ? tw`text-gray-500 hover:text-teal-accent-400`
+          : tw`text-gray-500 hover:text-deep-purple-accent-400`,
+      ]}
     >
       {children}
     </a>
@@ -67,14 +82,19 @@ const FooterEnd = ({ name }) => {
 const CompanyLink = ({ name }) => {
   const dark = useContext(Context);
   return (
-    <a
-      href="/"
-      aria-label="Go home"
-      title={name}
-      tw="inline-flex items-center"
-    >
-      <CompanyLogoSvg css={[tw`w-8`, dark ? tw`text-teal-accent-400` : tw`text-deep-purple-accent-400`]} />
-      <span css={[tw`ml-2 text-xl font-bold tracking-wide uppercase`, dark ? tw`text-gray-300` : tw`text-gray-800`]}>
+    <a href="/" aria-label="Go home" title={name} tw="inline-flex items-center">
+      <CompanyLogoSvg
+        css={[
+          tw`w-8`,
+          dark ? tw`text-teal-accent-400` : tw`text-deep-purple-accent-400`,
+        ]}
+      />
+      <span
+        css={[
+          tw`ml-2 text-xl font-bold tracking-wide uppercase`,
+          dark ? tw`text-gray-300` : tw`text-gray-800`,
+        ]}
+      >
         {name}
       </span>
     </a>

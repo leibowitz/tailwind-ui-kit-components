@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import HeaderContainer from './HeaderContainer';
-import HeaderContent from './HeaderContent';
-import CallToAction from './CallToAction';
-import AccentContext, { BoolProvider as AccentProvider } from './Context';
+import HeaderContainer from "./HeaderContainer";
+import HeaderContent from "./HeaderContent";
+import CallToAction from "./CallToAction";
+import AccentContext, { BoolProvider as AccentProvider } from "./Context";
 
 const HeaderBlocks = ({ title, text }) => (
   <div tw="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -22,17 +22,9 @@ const HeaderBlocks = ({ title, text }) => (
 const HeaderWrapper = ({ children }) => {
   const accent = useContext(AccentContext);
   if (accent) {
-    return (
-      <div tw="bg-deep-purple-accent-700">
-        {children}
-      </div>
-    );
+    return <div tw="bg-deep-purple-accent-700">{children}</div>;
   }
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 const Header = ({ title, text, accent }) => (

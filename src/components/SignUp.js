@@ -1,4 +1,4 @@
-import NavItemLink from './NavItemLink';
+import NavItemLink from "./NavItemLink";
 
 const SignUp = ({ large, text }) => (
   <NavItemLink large={large} title="Sign up" button={!text}>

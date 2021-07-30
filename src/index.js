@@ -5,10 +5,4 @@ import Nav from "./components/Nav";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
 
-export {
-  Header,
-  Subscribe,
-  Nav,
-  Team,
-  Footer
-};
+export { Header, Subscribe, Nav, Team, Footer };
