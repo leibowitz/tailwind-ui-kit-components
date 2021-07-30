@@ -1,5 +1,5 @@
 import NavItemLink from "./NavItemLink";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const SignUp = ({ large, text }) => (
   <NavItemLink large={large} title="Sign up" button={!text}>
@@ -9,7 +9,7 @@ const SignUp = ({ large, text }) => (
 
 SignUp.propTypes = {
   text: PropTypes.string,
-  large: PropTypes.bool
+  large: PropTypes.bool,
 };
 
 export default SignUp;

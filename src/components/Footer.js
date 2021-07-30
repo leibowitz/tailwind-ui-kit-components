@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import tw from "twin.macro";
 
 import CompanyLogoSvg from "../../static/company-logo.svg";
@@ -23,7 +23,7 @@ const Title = ({ children }) => {
 };
 
 Title.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const Item = ({ children }) => {
@@ -46,7 +46,7 @@ const Item = ({ children }) => {
 };
 
 Item.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const SocialLink = ({ children }) => {
@@ -67,7 +67,7 @@ const SocialLink = ({ children }) => {
 };
 
 SocialLink.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const FooterEnd = ({ name }) => {
@@ -93,7 +93,7 @@ const FooterEnd = ({ name }) => {
 };
 
 FooterEnd.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 const CompanyLink = ({ name }) => {
@@ -119,7 +119,7 @@ const CompanyLink = ({ name }) => {
 };
 
 CompanyLink.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 const AboutCompany = ({ name, description }) => {
@@ -138,7 +138,7 @@ const AboutCompany = ({ name, description }) => {
 
 AboutCompany.propTypes = {
   name: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
 };
 
 const Footer = ({ company, name, description, categories, dark }) => {
@@ -173,7 +173,7 @@ Footer.propTypes = {
   description: PropTypes.string,
   company: PropTypes.string,
   categories: PropTypes.array,
-  dark: PropTypes.bool
+  dark: PropTypes.bool,
 };
 
 export default Footer;

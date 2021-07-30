@@ -1,5 +1,5 @@
 import tw from "twin.macro";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useContext } from "react";
 
 import AccentContext from "./Context";
@@ -21,7 +21,7 @@ const SubscribeContent = ({ text }) => {
 };
 
 SubscribeContent.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 export default SubscribeContent;

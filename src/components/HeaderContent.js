@@ -1,5 +1,5 @@
 import tw from "twin.macro";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useContext } from "react";
 
 import HeaderTitle from "./HeaderTitle";
@@ -25,7 +25,7 @@ const HeaderContent = ({ title, text }) => {
 
 HeaderContent.propTypes = {
   title: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 export default HeaderContent;

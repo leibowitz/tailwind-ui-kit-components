@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const SubscribeTitle = ({ title }) => {
   return (
@@ -9,7 +9,7 @@ const SubscribeTitle = ({ title }) => {
 };
 
 SubscribeTitle.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 export default SubscribeTitle;

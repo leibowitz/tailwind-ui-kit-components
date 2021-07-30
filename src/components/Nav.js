@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import tw from "twin.macro";
 
 import MenuSvg from "../../static/menu.svg";
@@ -34,10 +34,12 @@ const DesktopNav = ({ name, links }) => (
 
 DesktopNav.propTypes = {
   name: PropTypes.string,
-  links: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    name: PropTypes.string
-  }))
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
 };
 
 const MobileNav = ({ links }) => (
@@ -59,10 +61,12 @@ const MobileNav = ({ links }) => (
 );
 
 MobileNav.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    name: PropTypes.string
-  }))
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
 };
 
 const MenuOpenButton = ({ setIsMenuOpen }) => {
@@ -83,7 +87,7 @@ const MenuOpenButton = ({ setIsMenuOpen }) => {
 };
 
 MenuOpenButton.propTypes = {
-  setIsMenuOpen: PropTypes.bool
+  setIsMenuOpen: PropTypes.bool,
 };
 
 const MenuCloseButton = ({ setIsMenuOpen }) => (
@@ -98,7 +102,7 @@ const MenuCloseButton = ({ setIsMenuOpen }) => (
 );
 
 MenuCloseButton.propTypes = {
-  setIsMenuOpen: PropTypes.bool
+  setIsMenuOpen: PropTypes.bool,
 };
 
 const NavContent = ({ name, links }) => {
@@ -139,10 +143,12 @@ const NavContent = ({ name, links }) => {
 
 NavContent.propTypes = {
   name: PropTypes.string,
-  links: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    name: PropTypes.string
-  }))
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
 };
 
 const Nav = ({ name, links, dark }) => {
@@ -157,11 +163,13 @@ const Nav = ({ name, links, dark }) => {
 
 Nav.propTypes = {
   name: PropTypes.string,
-  links: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    name: PropTypes.string
-  })),
-  dark: PropTypes.bool
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+  dark: PropTypes.bool,
 };
 
 export default Nav;

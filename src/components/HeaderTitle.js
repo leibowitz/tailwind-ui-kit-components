@@ -1,5 +1,5 @@
 import tw from "twin.macro";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useContext } from "react";
 
 import LogoSvg from "../../static/logo.svg";
@@ -28,7 +28,7 @@ const HeaderTitle = ({ children }) => {
 };
 
 HeaderTitle.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default HeaderTitle;

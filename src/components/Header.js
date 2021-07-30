@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import HeaderContainer from "./HeaderContainer";
 import HeaderContent from "./HeaderContent";
@@ -22,7 +22,7 @@ const HeaderBlocks = ({ title, text }) => (
 
 HeaderBlocks.propTypes = {
   title: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 const HeaderWrapper = ({ children }) => {
@@ -34,7 +34,7 @@ const HeaderWrapper = ({ children }) => {
 };
 
 HeaderWrapper.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const Header = ({ title, text, accent }) => (
@@ -48,7 +48,7 @@ const Header = ({ title, text, accent }) => (
 Header.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
-  accent: PropTypes.bool
+  accent: PropTypes.bool,
 };
 
 export default Header;

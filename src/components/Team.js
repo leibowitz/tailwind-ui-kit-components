@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const Person = (person) => {
   return (
@@ -23,8 +23,8 @@ Person.propTypes = {
   person: PropTypes.shape({
     name: PropTypes.string,
     role: PropTypes.string,
-    description: PropTypes.string
-  })
+    description: PropTypes.string,
+  }),
 };
 
 const Team = ({ peoples }) => {
@@ -40,11 +40,13 @@ const Team = ({ peoples }) => {
 };
 
 Team.propTypes = {
-  peoples: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    role: PropTypes.string,
-    description: PropTypes.string
-  }))
+  peoples: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      role: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ),
 };
 
 export default Team;
