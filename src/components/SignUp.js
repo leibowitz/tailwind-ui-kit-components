@@ -1,5 +1,3 @@
-import tw from 'twin.macro';
-
 import NavItemLink from './NavItemLink';
 
 const SignUp = ({ large, text }) => (

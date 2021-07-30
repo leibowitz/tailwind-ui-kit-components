@@ -1,5 +1,3 @@
-import tw from 'twin.macro';
-
 import HightLightSvg from '../../static/highlight.svg';
 
 const SubscribeHeader = () => (
