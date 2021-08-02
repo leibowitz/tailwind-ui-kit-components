@@ -1,19 +1,22 @@
+import React from "react";
 import tw from "twin.macro";
 import PropTypes from "prop-types";
-import { BoolProvider as AccentProvider } from "~/src/Context";
 
 import SubscribeHeader from "./SubscribeHeader";
 import SubscribeTitle from "./SubscribeTitle";
 import SubscribeContent from "./SubscribeContent";
 import SubscribeForm from "./SubscribeForm";
 
-const Subscribe = ({ title, text, note, accent }) => {
+export const Context = React.createContext({ dark: false, accent: false });
+
+const Subscribe = ({ title, text, note, accent, dark }) => {
   return (
-    <AccentProvider value={accent}>
+    <Context.Provider value={{ dark, accent }}>
       <div
         css={[
           tw`relative`,
-          accent ? tw`bg-deep-purple-accent-400` : tw`bg-gray-900`,
+          accent && tw`bg-deep-purple-accent-400`,
+          dark && tw`bg-gray-900`,
         ]}
       >
         <SubscribeHeader />
@@ -25,7 +28,7 @@ const Subscribe = ({ title, text, note, accent }) => {
           </div>
         </div>
       </div>
-    </AccentProvider>
+    </Context.Provider>
   );
 };
 
@@ -34,6 +37,7 @@ Subscribe.propTypes = {
   text: PropTypes.string,
   note: PropTypes.string,
   accent: PropTypes.bool,
+  dark: PropTypes.bool,
 };
 
 export default Subscribe;
