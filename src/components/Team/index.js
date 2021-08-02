@@ -1,23 +1,29 @@
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 
-const Person = ({ small, center, ...person }) => {
+const Person = ({ small, center, square, ...person }) => {
   return (
     <div css={[small && tw`flex`, center && tw`flex flex-col items-center`]}>
-      <img
-        css={[
-          tw`object-cover rounded-full shadow`,
-          small || center ? tw`w-20 h-20` : tw`w-24 h-24`,
-          small && tw`mr-4`,
-        ]}
-        src="https://thispersondoesnotexist.com/image"
-        alt="Person"
-      />
+      <div css={[square && tw`relative pb-56 mb-4 rounded shadow lg:pb-64`]}>
+        <img
+          css={[
+            tw`object-cover`,
+            small || center ? tw`w-20 h-20` : tw`w-24 h-24`,
+            small && tw`mr-4`,
+            !square && tw`rounded-full shadow`,
+            square && tw`absolute w-full h-full rounded`,
+          ]}
+          src="https://thispersondoesnotexist.com/image"
+          alt="Person"
+        />
+      </div>
       <div
         css={[
           tw`flex flex-col`,
-          !small && tw`items-start mt-2`,
-          center ? tw`items-center` : tw`justify-center`,
+          center && tw`items-center`,
+          square && tw`sm:text-center`,
+          !small && !center && !square && tw`items-start mt-2`,
+          small && tw`justify-center mt-2`,
         ]}
       >
         <p tw="text-lg font-bold">{person.name}</p>
@@ -33,6 +39,7 @@ const Person = ({ small, center, ...person }) => {
 Person.propTypes = {
   small: PropTypes.bool,
   center: PropTypes.bool,
+  square: PropTypes.bool,
   person: PropTypes.shape({
     name: PropTypes.string,
     role: PropTypes.string,
@@ -40,7 +47,7 @@ Person.propTypes = {
   }),
 };
 
-const Team = ({ peoples, title, intro, small, center }) => {
+const Team = ({ peoples, title, intro, small, center, square }) => {
   return (
     <div tw="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div tw="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -51,7 +58,13 @@ const Team = ({ peoples, title, intro, small, center }) => {
       </div>
       <div tw="grid gap-10 mx-auto sm:grid-cols-2 lg:grid-cols-4 lg:max-w-screen-lg">
         {peoples.map((person, index) => (
-          <Person key={index} {...person} small={small} center={center} />
+          <Person
+            key={index}
+            {...person}
+            small={small}
+            center={center}
+            square={square}
+          />
         ))}
       </div>
     </div>
@@ -63,6 +76,7 @@ Team.propTypes = {
   intro: PropTypes.string,
   small: PropTypes.bool,
   center: PropTypes.bool,
+  square: PropTypes.bool,
   peoples: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
