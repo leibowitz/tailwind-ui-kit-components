@@ -122,14 +122,14 @@ CompanyLink.propTypes = {
   name: PropTypes.string,
 };
 
-const AboutCompany = ({ name, description }) => {
+const AboutCompany = ({ name, children }) => {
   const dark = useContext(Context);
   return (
     <div tw="md:max-w-md lg:col-span-2 text-left">
       <CompanyLink name={name} />
       <div tw="mt-4 lg:max-w-sm">
         <p css={[tw`text-sm`, dark ? tw`text-gray-500` : tw`text-gray-800`]}>
-          {description}
+          {children}
         </p>
       </div>
     </div>
@@ -138,7 +138,7 @@ const AboutCompany = ({ name, description }) => {
 
 AboutCompany.propTypes = {
   name: PropTypes.string,
-  description: PropTypes.string,
+  children: PropTypes.node,
 };
 
 const Footer = ({ company, name, description, categories, dark }) => {
@@ -147,7 +147,7 @@ const Footer = ({ company, name, description, categories, dark }) => {
       <div css={[dark && tw`bg-gray-900`]}>
         <div tw="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div tw="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
-            <AboutCompany name={name} description={description} />
+            <AboutCompany name={name}>{description}</AboutCompany>
             <div tw="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4 text-left">
               {Object.keys(categories).map((category) => (
                 <div key={category}>
@@ -170,9 +170,9 @@ const Footer = ({ company, name, description, categories, dark }) => {
 
 Footer.propTypes = {
   name: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.node,
   company: PropTypes.string,
-  categories: PropTypes.array,
+  categories: PropTypes.object,
   dark: PropTypes.bool,
 };
 

@@ -87,7 +87,7 @@ const MenuOpenButton = ({ setIsMenuOpen }) => {
 };
 
 MenuOpenButton.propTypes = {
-  setIsMenuOpen: PropTypes.bool,
+  setIsMenuOpen: PropTypes.func,
 };
 
 const MenuCloseButton = ({ setIsMenuOpen }) => (
