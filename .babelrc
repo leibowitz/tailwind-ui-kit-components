@@ -8,6 +8,17 @@
                 "inline-react-svg",
                 "babel-plugin-twin",
                 "babel-plugin-macros",
-                "babel-plugin-styled-components"
+                "babel-plugin-styled-components",
+                [
+                        "babel-plugin-root-import",
+                        {
+                                "paths": [
+                                        {
+                                                "rootPathSuffix": "./",
+                                                "rootPathPrefix": "~/"
+                                        }
+                                ]
+                        }
+                ]
         ]
 }

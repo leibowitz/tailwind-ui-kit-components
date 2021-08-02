@@ -1,8 +1,8 @@
 import tw from "twin.macro";
 import { useContext } from "react";
 
-import DotsSvg from "../../static/dots.svg";
-import AccentContext from "./Context";
+import DotsSvg from "~/static/dots.svg";
+import AccentContext from "~/src/Context";
 
 const HeaderContainer = () => {
   const accent = useContext(AccentContext);

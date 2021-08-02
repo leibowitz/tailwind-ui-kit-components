@@ -2,8 +2,8 @@ import tw from "twin.macro";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 
-import DarkContext from "./Context";
-import CompanyLogoSvg from "../../static/company-logo.svg";
+import DarkContext from "~/src/Context";
+import CompanyLogoSvg from "~/static/company-logo.svg";
 
 const Company = ({ name, large }) => {
   const dark = useContext(DarkContext);

@@ -2,7 +2,7 @@ import tw from "twin.macro";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 
-import AccentContext from "./Context";
+import AccentContext from "~/src/Context";
 
 const SubscribeContent = ({ text }) => {
   const accent = useContext(AccentContext);

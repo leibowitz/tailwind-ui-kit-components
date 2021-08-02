@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 
 import HeaderTitle from "./HeaderTitle";
-import AccentContext from "./Context";
+import AccentContext from "~/src/Context";
 
 const HeaderContent = ({ title, text }) => {
   const accent = useContext(AccentContext);

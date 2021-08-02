@@ -2,14 +2,14 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 
-import MenuSvg from "../../static/menu.svg";
-import CloseSvg from "../../static/close.svg";
+import MenuSvg from "~/static/menu.svg";
+import CloseSvg from "~/static/close.svg";
 
 import ItemLink from "./NavItemLink";
 import Company from "./Company";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import DarkContext, { BoolProvider as DarkProvider } from "./Context";
+import DarkContext, { BoolProvider as DarkProvider } from "~/src/Context";
 
 const DesktopNav = ({ name, links }) => (
   <>

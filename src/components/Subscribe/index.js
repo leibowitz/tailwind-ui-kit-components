@@ -1,6 +1,6 @@
 import tw from "twin.macro";
 import PropTypes from "prop-types";
-import { BoolProvider as AccentProvider } from "./Context";
+import { BoolProvider as AccentProvider } from "~/src/Context";
 
 import SubscribeHeader from "./SubscribeHeader";
 import SubscribeTitle from "./SubscribeTitle";

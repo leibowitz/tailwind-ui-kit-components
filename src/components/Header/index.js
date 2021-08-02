@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import HeaderContainer from "./HeaderContainer";
 import HeaderContent from "./HeaderContent";
 import CallToAction from "./CallToAction";
-import AccentContext, { BoolProvider as AccentProvider } from "./Context";
+import AccentContext, { BoolProvider as AccentProvider } from "~/src/Context";
 
 const HeaderBlocks = ({ title, text }) => (
   <div tw="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">

@@ -2,7 +2,7 @@ import tw from "twin.macro";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 
-import DarkContext from "./Context";
+import DarkContext from "~/src/Context";
 
 const ItemLink = ({ title, large, button, children }) => {
   const dark = useContext(DarkContext);

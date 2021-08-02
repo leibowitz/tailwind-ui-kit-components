@@ -1,8 +1,8 @@
 import tw from "twin.macro";
 import { useContext } from "react";
 
-import ArrowSvg from "../../static/arrow.svg";
-import AccentContext from "./Context";
+import ArrowSvg from "~/static/arrow.svg";
+import AccentContext from "~/src/Context";
 
 const SubscribeScroll = () => {
   const accent = useContext(AccentContext);

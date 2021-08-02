@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import { useContext } from "react";
 
-import AccentContext from "./Context";
+import AccentContext from "~/src/Context";
 
 const CallToAction = () => {
   const accent = useContext(AccentContext);

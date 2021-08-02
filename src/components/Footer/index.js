@@ -2,11 +2,11 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 
-import CompanyLogoSvg from "../../static/company-logo.svg";
-import TwitterSvg from "../../static/twitter.svg";
-import InstagramSvg from "../../static/instagram.svg";
-import FacebookSvg from "../../static/facebook.svg";
-import Context, { BoolProvider } from "./Context";
+import CompanyLogoSvg from "~/static/company-logo.svg";
+import TwitterSvg from "~/static/twitter.svg";
+import InstagramSvg from "~/static/instagram.svg";
+import FacebookSvg from "~/static/facebook.svg";
+import Context, { BoolProvider } from "~/src/Context";
 
 const Title = ({ children }) => {
   const dark = useContext(Context);

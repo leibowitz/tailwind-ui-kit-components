@@ -2,8 +2,8 @@ import tw from "twin.macro";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 
-import LogoSvg from "../../static/logo.svg";
-import AccentContext from "./Context";
+import LogoSvg from "~/static/logo.svg";
+import AccentContext from "~/src/Context";
 
 const HeaderTitle = ({ children }) => {
   const accent = useContext(AccentContext);
