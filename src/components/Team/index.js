@@ -16,27 +16,51 @@ Card.propTypes = {
 };
 
 const Person = ({ small, center, square, ...person }) => {
+  if (square) {
+    return (
+      <div css={[!center && tw`grid sm:grid-cols-3`]}>
+        <div
+          css={[
+            tw`relative rounded shadow`,
+            !center && tw`sm:h-auto w-full h-48 max-h-full`,
+            center && tw`pb-56 mb-4 lg:pb-64`,
+          ]}
+        >
+          <img
+            tw="absolute object-cover w-full h-full rounded"
+            src="https://thispersondoesnotexist.com/image"
+            alt="Person"
+          />
+        </div>
+        <div
+          css={[
+            tw`flex flex-col`,
+            center && tw`sm:text-center`,
+            !center && tw`justify-center mt-5 sm:mt-0 sm:p-5 sm:col-span-2`,
+          ]}
+        >
+          <Card {...person} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div css={[small && tw`flex`, center && tw`flex flex-col items-center`]}>
-      <div css={[square && tw`relative pb-56 mb-4 rounded shadow lg:pb-64`]}>
-        <img
-          css={[
-            tw`object-cover`,
-            small || center ? tw`w-20 h-20` : tw`w-24 h-24`,
-            small && tw`mr-4`,
-            !square && tw`rounded-full shadow`,
-            square && tw`absolute w-full h-full rounded`,
-          ]}
-          src="https://thispersondoesnotexist.com/image"
-          alt="Person"
-        />
-      </div>
+      <img
+        css={[
+          tw`object-cover rounded-full shadow`,
+          small || center ? tw`w-20 h-20` : tw`w-24 h-24`,
+          small && tw`mr-4`,
+        ]}
+        src="https://thispersondoesnotexist.com/image"
+        alt="Person"
+      />
       <div
         css={[
           tw`flex flex-col`,
           center && tw`items-center`,
-          square && tw`sm:text-center`,
-          !small && !center && !square && tw`items-start mt-2`,
+          !small && !center && tw`items-start mt-2`,
           small && tw`justify-center mt-2`,
         ]}
       >
@@ -66,7 +90,14 @@ const Team = ({ peoples, title, intro, small, center, square }) => {
         </h2>
         <p tw="text-base text-gray-700 md:text-lg">{intro}</p>
       </div>
-      <div tw="grid gap-10 mx-auto sm:grid-cols-2 lg:grid-cols-4 lg:max-w-screen-lg">
+      <div
+        css={[
+          tw`grid gap-10 mx-auto lg:max-w-screen-lg`,
+          square && !center
+            ? tw`lg:grid-cols-2`
+            : tw`sm:grid-cols-2 lg:grid-cols-4`,
+        ]}
+      >
         {peoples.map((person, index) => (
           <Person
             key={index}
