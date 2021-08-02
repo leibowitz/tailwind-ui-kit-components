@@ -1,6 +1,20 @@
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 
+const Card = ({ name, role, description }) => (
+  <>
+    <p tw="text-lg font-bold">{name}</p>
+    <p tw="mb-4 text-xs text-gray-800">{role}</p>
+    <p tw="text-sm tracking-wide text-gray-800 text-left">{description}</p>
+  </>
+);
+
+Card.propTypes = {
+  name: PropTypes.string,
+  role: PropTypes.string,
+  description: PropTypes.string,
+};
+
 const Person = ({ small, center, square, ...person }) => {
   return (
     <div css={[small && tw`flex`, center && tw`flex flex-col items-center`]}>
@@ -26,11 +40,7 @@ const Person = ({ small, center, square, ...person }) => {
           small && tw`justify-center mt-2`,
         ]}
       >
-        <p tw="text-lg font-bold">{person.name}</p>
-        <p tw="mb-4 text-xs text-gray-800">{person.role}</p>
-        <p tw="text-sm tracking-wide text-gray-800 text-left">
-          {person.description}
-        </p>
+        <Card {...person} />
       </div>
     </div>
   );
