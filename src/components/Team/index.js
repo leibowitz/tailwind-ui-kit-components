@@ -1,44 +1,67 @@
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 
-const Card = ({ name, role, description }) => (
+const Card = ({ name, role, description, hover }) => (
   <>
-    <p tw="text-lg font-bold">{name}</p>
-    <p tw="mb-4 text-xs text-gray-800">{role}</p>
-    <p tw="text-sm tracking-wide text-gray-800 text-left">{description}</p>
+    <p css={[tw`text-lg font-bold`, hover && tw`text-gray-100 mb-1`]}>{name}</p>
+    <p css={[tw`mb-4 text-xs`, hover ? tw`text-gray-100` : tw`text-gray-800`]}>
+      {role}
+    </p>
+    <p
+      css={[
+        tw`text-sm tracking-wide`,
+        hover ? tw`text-gray-400 mb-4` : tw`text-gray-800 text-left`,
+      ]}
+    >
+      {description}
+    </p>
   </>
 );
 
 Card.propTypes = {
+  hover: PropTypes.bool,
   name: PropTypes.string,
   role: PropTypes.string,
   description: PropTypes.string,
 };
 
+const Image = ({ ...style }) => (
+  <img {...style} src="https://thispersondoesnotexist.com/image" alt="Person" />
+);
+
 const Square = ({ layout, ...person }) => (
-  <div css={[layout === "square-left" && tw`grid sm:grid-cols-3`]}>
-    <div
-      css={[
-        tw`relative rounded shadow`,
-        layout === "square-left" && tw`sm:h-auto w-full h-48 max-h-full`,
-        layout === "square-center" && tw`pb-56 mb-4 lg:pb-64`,
-      ]}
-    >
-      <img
-        tw="absolute object-cover w-full h-full rounded"
-        src="https://thispersondoesnotexist.com/image"
-        alt="Person"
-      />
-    </div>
+  <div
+    css={[
+      layout === "square-left" && tw`grid sm:grid-cols-3`,
+      layout === "square-hover" &&
+        tw`relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl`,
+    ]}
+  >
+    {layout === "square-hover" && (
+      <Image tw="object-cover w-full h-56 md:h-64 xl:h-80" />
+    )}
+    {layout !== "square-hover" && (
+      <div
+        css={[
+          tw`relative rounded shadow`,
+          layout === "square-left" && tw`sm:h-auto w-full h-48 max-h-full`,
+          layout === "square-center" && tw`pb-56 mb-4 lg:pb-64`,
+        ]}
+      >
+        <Image tw="absolute object-cover w-full h-full rounded" />
+      </div>
+    )}
     <div
       css={[
         tw`flex flex-col`,
         layout === "square-center" && tw`sm:text-center`,
         layout === "square-left" &&
           tw`justify-center mt-5 sm:mt-0 sm:p-5 sm:col-span-2`,
+        layout === "square-hover" &&
+          tw`absolute inset-0 justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100`,
       ]}
     >
-      <Card {...person} />
+      <Card {...person} hover={layout === "square-hover"} />
     </div>
   </div>
 );
@@ -59,14 +82,12 @@ const Round = ({ layout, ...person }) => (
       layout === "round-center" && tw`flex flex-col items-center`,
     ]}
   >
-    <img
+    <Image
       css={[
         tw`object-cover rounded-full shadow`,
         layout === "round-left" ? tw`w-24 h-24` : tw`w-20 h-20`,
         layout === "round-small" && tw`mr-4`,
       ]}
-      src="https://thispersondoesnotexist.com/image"
-      alt="Person"
     />
     <div
       css={[
