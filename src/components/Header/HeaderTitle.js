@@ -18,7 +18,7 @@ const HeaderTitle = ({ children }) => {
         <LogoSvg
           css={[
             tw`absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block`,
-            accent ? tw`text-deep-purple-accent-100 ` : tw`text-blue-gray-100`,
+            accent ? tw`text-deep-purple-accent-100` : tw`text-blue-gray-100`,
           ]}
         />
         <span tw="relative">{children}</span>
