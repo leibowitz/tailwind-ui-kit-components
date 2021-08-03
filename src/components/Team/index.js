@@ -15,68 +15,73 @@ Card.propTypes = {
   description: PropTypes.string,
 };
 
-const Person = ({ layout, ...person }) => {
-  if (layout.startsWith("square")) {
-    return (
-      <div css={[layout === "square-left" && tw`grid sm:grid-cols-3`]}>
-        <div
-          css={[
-            tw`relative rounded shadow`,
-            layout === "square-left" && tw`sm:h-auto w-full h-48 max-h-full`,
-            layout === "square-center" && tw`pb-56 mb-4 lg:pb-64`,
-          ]}
-        >
-          <img
-            tw="absolute object-cover w-full h-full rounded"
-            src="https://thispersondoesnotexist.com/image"
-            alt="Person"
-          />
-        </div>
-        <div
-          css={[
-            tw`flex flex-col`,
-            layout === "square-center" && tw`sm:text-center`,
-            layout === "square-left" &&
-              tw`justify-center mt-5 sm:mt-0 sm:p-5 sm:col-span-2`,
-          ]}
-        >
-          <Card {...person} />
-        </div>
-      </div>
-    );
-  }
-
-  return (
+const Square = ({ layout, ...person }) => (
+  <div css={[layout === "square-left" && tw`grid sm:grid-cols-3`]}>
     <div
       css={[
-        layout === "round-small" && tw`flex`,
-        layout === "round-center" && tw`flex flex-col items-center`,
+        tw`relative rounded shadow`,
+        layout === "square-left" && tw`sm:h-auto w-full h-48 max-h-full`,
+        layout === "square-center" && tw`pb-56 mb-4 lg:pb-64`,
       ]}
     >
       <img
-        css={[
-          tw`object-cover rounded-full shadow`,
-          layout === "round-left" ? tw`w-24 h-24` : tw`w-20 h-20`,
-          layout === "round-small" && tw`mr-4`,
-        ]}
+        tw="absolute object-cover w-full h-full rounded"
         src="https://thispersondoesnotexist.com/image"
         alt="Person"
       />
-      <div
-        css={[
-          tw`flex flex-col`,
-          layout === "round-center" && tw`items-center`,
-          layout === "round-left" && tw`items-start mt-2`,
-          layout === "round-small" && tw`justify-center mt-2`,
-        ]}
-      >
-        <Card {...person} />
-      </div>
     </div>
-  );
+    <div
+      css={[
+        tw`flex flex-col`,
+        layout === "square-center" && tw`sm:text-center`,
+        layout === "square-left" &&
+          tw`justify-center mt-5 sm:mt-0 sm:p-5 sm:col-span-2`,
+      ]}
+    >
+      <Card {...person} />
+    </div>
+  </div>
+);
+
+Square.propTypes = {
+  layout: PropTypes.string,
+  person: PropTypes.shape({
+    name: PropTypes.string,
+    role: PropTypes.string,
+    description: PropTypes.string,
+  }),
 };
 
-Person.propTypes = {
+const Round = ({ layout, ...person }) => (
+  <div
+    css={[
+      layout === "round-small" && tw`flex`,
+      layout === "round-center" && tw`flex flex-col items-center`,
+    ]}
+  >
+    <img
+      css={[
+        tw`object-cover rounded-full shadow`,
+        layout === "round-left" ? tw`w-24 h-24` : tw`w-20 h-20`,
+        layout === "round-small" && tw`mr-4`,
+      ]}
+      src="https://thispersondoesnotexist.com/image"
+      alt="Person"
+    />
+    <div
+      css={[
+        tw`flex flex-col`,
+        layout === "round-center" && tw`items-center`,
+        layout === "round-left" && tw`items-start mt-2`,
+        layout === "round-small" && tw`justify-center mt-2`,
+      ]}
+    >
+      <Card {...person} />
+    </div>
+  </div>
+);
+
+Round.propTypes = {
   layout: PropTypes.string,
   person: PropTypes.shape({
     name: PropTypes.string,
@@ -95,6 +100,8 @@ const Team = ({ peoples, title, intro, layout }) => {
   // - left
   // - small
   // - center
+  const PersonComponent = layout.startsWith("square") ? Square : Round;
+
   return (
     <div tw="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div tw="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -116,7 +123,7 @@ const Team = ({ peoples, title, intro, layout }) => {
         ]}
       >
         {peoples.map((person, index) => (
-          <Person key={index} {...person} layout={layout} />
+          <PersonComponent key={index} {...person} layout={layout} />
         ))}
       </div>
     </div>
