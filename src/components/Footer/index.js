@@ -165,7 +165,14 @@ AboutCompany.propTypes = {
   children: PropTypes.node,
 };
 
-const Footer = ({ company, name, description, categories, variant }) => {
+const Footer = ({
+  company,
+  name,
+  description,
+  categories,
+  variant,
+  subscribe,
+}) => {
   return (
     <DefaultContext.Provider value={variant}>
       <div
@@ -194,7 +201,7 @@ const Footer = ({ company, name, description, categories, variant }) => {
                 ))}
               </div>
             )}
-            {!name && <Subscribe />}
+            {subscribe && <Subscribe>{subscribe}</Subscribe>}
           </div>
           <FooterEnd name={company} />
         </div>
@@ -205,6 +212,7 @@ const Footer = ({ company, name, description, categories, variant }) => {
 
 Footer.propTypes = {
   name: PropTypes.string,
+  subscribe: PropTypes.node,
   description: PropTypes.node,
   company: PropTypes.string,
   categories: PropTypes.object,

@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import tw from "twin.macro";
+import PropTypes from "prop-types";
 
 import DefaultContext from "./context";
 
-const Subscribe = () => {
+const Subscribe = ({ children }) => {
   const variant = useContext(DefaultContext);
   return (
     <div tw="md:max-w-md lg:col-span-2">
@@ -30,12 +31,13 @@ const Subscribe = () => {
           Subscribe
         </button>
       </form>
-      <p tw="mt-4 text-sm text-gray-500">
-        Bacon ipsum dolor amet short ribs pig sausage prosciuto chicken spare
-        ribs salami.
-      </p>
+      <p tw="mt-4 text-sm text-gray-500">{children}</p>
     </div>
   );
+};
+
+Subscribe.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Subscribe;
