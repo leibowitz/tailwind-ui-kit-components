@@ -9,6 +9,7 @@ import FacebookSvg from "~/static/facebook.svg";
 import CurveSvg from "~/static/curve.svg";
 import DefaultContext from "./context";
 import Subscribe from "./Subscribe";
+import Contacts from "./Contacts";
 
 const Title = ({ children }) => {
   const variant = useContext(DefaultContext);
@@ -172,6 +173,7 @@ const Footer = ({
   categories,
   variant,
   subscribe,
+  contact,
 }) => {
   return (
     <DefaultContext.Provider value={variant}>
@@ -185,7 +187,13 @@ const Footer = ({
           <CurveSvg tw="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-deep-purple-accent-400" />
         )}
         <div tw="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-          <div tw="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
+          <div
+            css={[
+              !contact && tw`grid gap-16 row-gap-10 mb-8 lg:grid-cols-6`,
+              contact &&
+                tw`grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4`,
+            ]}
+          >
             {name && <AboutCompany name={name}>{description}</AboutCompany>}
             {categories && (
               <div tw="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4 text-left">
@@ -202,6 +210,7 @@ const Footer = ({
               </div>
             )}
             {subscribe && <Subscribe>{subscribe}</Subscribe>}
+            {contact && <Contacts {...contact} />}
           </div>
           <FooterEnd name={company} />
         </div>
@@ -217,6 +226,11 @@ Footer.propTypes = {
   company: PropTypes.string,
   categories: PropTypes.object,
   variant: PropTypes.string,
+  contact: PropTypes.shape({
+    phone: PropTypes.string,
+    email: PropTypes.string,
+    address: PropTypes.string,
+  }),
 };
 
 Footer.defaultProps = {
