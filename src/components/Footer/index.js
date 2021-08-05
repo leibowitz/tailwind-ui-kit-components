@@ -6,6 +6,7 @@ import CompanyLogoSvg from "~/static/company-logo.svg";
 import TwitterSvg from "~/static/twitter.svg";
 import InstagramSvg from "~/static/instagram.svg";
 import FacebookSvg from "~/static/facebook.svg";
+import CurveSvg from "~/static/curve.svg";
 import DefaultContext from "./context";
 
 const Title = ({ children }) => {
@@ -14,7 +15,9 @@ const Title = ({ children }) => {
     <p
       css={[
         tw`font-semibold tracking-wide`,
-        variant === "dark" ? tw`text-gray-300` : tw`text-gray-800`,
+        variant === "default" && tw`text-gray-800`,
+        variant === "dark" && tw`text-gray-300`,
+        variant === "accent" && tw`text-teal-accent-400`,
       ]}
     >
       {children}
@@ -34,9 +37,10 @@ const Item = ({ children }) => {
         href="/"
         css={[
           tw`transition-colors duration-300`,
-          variant === "dark"
-            ? tw`text-gray-500 hover:text-teal-accent-400`
-            : tw`text-gray-600 hover:text-deep-purple-accent-400`,
+          variant === "default" &&
+            tw`text-gray-600 hover:text-deep-purple-accent-400`,
+          variant === "dark" && tw`text-gray-500 hover:text-teal-accent-400`,
+          variant === "accent" && tw`text-gray-300 hover:text-teal-accent-400`,
         ]}
       >
         {children}
@@ -56,9 +60,10 @@ const SocialLink = ({ children }) => {
       href="/"
       css={[
         tw`transition-colors duration-300`,
-        variant === "dark"
-          ? tw`text-gray-500 hover:text-teal-accent-400`
-          : tw`text-gray-500 hover:text-deep-purple-accent-400`,
+        variant === "default" &&
+          tw`text-gray-500 hover:text-deep-purple-accent-400`,
+        variant === "dark" && tw`text-gray-500 hover:text-teal-accent-400`,
+        variant === "accent" && tw`text-gray-300 hover:text-teal-accent-400`,
       ]}
     >
       {children}
@@ -77,7 +82,9 @@ const FooterEnd = ({ name }) => {
       <p
         css={[
           tw`text-sm`,
-          variant === "dark" ? tw`text-gray-500` : tw`text-gray-600`,
+          variant === "default" && tw`text-gray-600`,
+          variant === "dark" && tw`text-gray-500`,
+          variant === "accent" && tw`text-gray-300`,
         ]}
       >
         © Copyright 2021 {name} All rights reserved.
@@ -108,15 +115,17 @@ const CompanyLink = ({ name }) => {
       <CompanyLogoSvg
         css={[
           tw`w-8`,
-          variant === "dark"
-            ? tw`text-teal-accent-400`
-            : tw`text-deep-purple-accent-400`,
+          variant === "default"
+            ? tw`text-deep-purple-accent-400`
+            : tw`text-teal-accent-400`,
         ]}
       />
       <span
         css={[
           tw`ml-2 text-xl font-bold tracking-wide uppercase`,
-          variant === "dark" ? tw`text-gray-300` : tw`text-gray-800`,
+          variant === "default" && tw`text-gray-800`,
+          variant === "dark" && tw`text-gray-300`,
+          variant === "accent" && tw`text-gray-300`,
         ]}
       >
         {name}
@@ -138,7 +147,9 @@ const AboutCompany = ({ name, children }) => {
         <p
           css={[
             tw`text-sm`,
-            variant === "dark" ? tw`text-gray-500` : tw`text-gray-800`,
+            variant === "default" && tw`text-gray-800`,
+            variant === "dark" && tw`text-gray-500`,
+            variant === "accent" && tw`text-gray-300`,
           ]}
         >
           {children}
@@ -156,7 +167,15 @@ AboutCompany.propTypes = {
 const Footer = ({ company, name, description, categories, variant }) => {
   return (
     <DefaultContext.Provider value={variant}>
-      <div css={[variant === "dark" && tw`bg-gray-900`]}>
+      <div
+        css={[
+          variant === "dark" && tw`bg-gray-900`,
+          variant === "accent" && tw`relative mt-16 bg-deep-purple-accent-400`,
+        ]}
+      >
+        {variant === "accent" && (
+          <CurveSvg tw="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-deep-purple-accent-400" />
+        )}
         <div tw="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div tw="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
             <AboutCompany name={name}>{description}</AboutCompany>
@@ -186,6 +205,10 @@ Footer.propTypes = {
   company: PropTypes.string,
   categories: PropTypes.object,
   variant: PropTypes.string,
+};
+
+Footer.defaultProps = {
+  variant: "default",
 };
 
 export default Footer;
