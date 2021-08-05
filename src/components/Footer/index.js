@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 
@@ -6,15 +6,15 @@ import CompanyLogoSvg from "~/static/company-logo.svg";
 import TwitterSvg from "~/static/twitter.svg";
 import InstagramSvg from "~/static/instagram.svg";
 import FacebookSvg from "~/static/facebook.svg";
-import Context, { BoolProvider } from "~/src/Context";
+import DefaultContext from "./context";
 
 const Title = ({ children }) => {
-  const dark = useContext(Context);
+  const variant = useContext(DefaultContext);
   return (
     <p
       css={[
         tw`font-semibold tracking-wide`,
-        dark ? tw`text-gray-300` : tw`text-gray-800`,
+        variant === "dark" ? tw`text-gray-300` : tw`text-gray-800`,
       ]}
     >
       {children}
@@ -27,14 +27,14 @@ Title.propTypes = {
 };
 
 const Item = ({ children }) => {
-  const dark = useContext(Context);
+  const variant = useContext(DefaultContext);
   return (
     <li>
       <a
         href="/"
         css={[
           tw`transition-colors duration-300`,
-          dark
+          variant === "dark"
             ? tw`text-gray-500 hover:text-teal-accent-400`
             : tw`text-gray-600 hover:text-deep-purple-accent-400`,
         ]}
@@ -50,13 +50,13 @@ Item.propTypes = {
 };
 
 const SocialLink = ({ children }) => {
-  const dark = useContext(Context);
+  const variant = useContext(DefaultContext);
   return (
     <a
       href="/"
       css={[
         tw`transition-colors duration-300`,
-        dark
+        variant === "dark"
           ? tw`text-gray-500 hover:text-teal-accent-400`
           : tw`text-gray-500 hover:text-deep-purple-accent-400`,
       ]}
@@ -71,10 +71,15 @@ SocialLink.propTypes = {
 };
 
 const FooterEnd = ({ name }) => {
-  const dark = useContext(Context);
+  const variant = useContext(DefaultContext);
   return (
     <div tw="flex flex-col justify-between pt-5 pb-10 border-t sm:flex-row">
-      <p css={[tw`text-sm`, dark ? tw`text-gray-500` : tw`text-gray-600`]}>
+      <p
+        css={[
+          tw`text-sm`,
+          variant === "dark" ? tw`text-gray-500` : tw`text-gray-600`,
+        ]}
+      >
         © Copyright 2021 {name} All rights reserved.
       </p>
       <div tw="flex items-center mt-4 space-x-4 sm:mt-0">
@@ -97,19 +102,21 @@ FooterEnd.propTypes = {
 };
 
 const CompanyLink = ({ name }) => {
-  const dark = useContext(Context);
+  const variant = useContext(DefaultContext);
   return (
     <a href="/" aria-label="Go home" title={name} tw="inline-flex items-center">
       <CompanyLogoSvg
         css={[
           tw`w-8`,
-          dark ? tw`text-teal-accent-400` : tw`text-deep-purple-accent-400`,
+          variant === "dark"
+            ? tw`text-teal-accent-400`
+            : tw`text-deep-purple-accent-400`,
         ]}
       />
       <span
         css={[
           tw`ml-2 text-xl font-bold tracking-wide uppercase`,
-          dark ? tw`text-gray-300` : tw`text-gray-800`,
+          variant === "dark" ? tw`text-gray-300` : tw`text-gray-800`,
         ]}
       >
         {name}
@@ -123,12 +130,17 @@ CompanyLink.propTypes = {
 };
 
 const AboutCompany = ({ name, children }) => {
-  const dark = useContext(Context);
+  const variant = useContext(DefaultContext);
   return (
     <div tw="md:max-w-md lg:col-span-2 text-left">
       <CompanyLink name={name} />
       <div tw="mt-4 lg:max-w-sm">
-        <p css={[tw`text-sm`, dark ? tw`text-gray-500` : tw`text-gray-800`]}>
+        <p
+          css={[
+            tw`text-sm`,
+            variant === "dark" ? tw`text-gray-500` : tw`text-gray-800`,
+          ]}
+        >
           {children}
         </p>
       </div>
@@ -141,10 +153,10 @@ AboutCompany.propTypes = {
   children: PropTypes.node,
 };
 
-const Footer = ({ company, name, description, categories, dark }) => {
+const Footer = ({ company, name, description, categories, variant }) => {
   return (
-    <BoolProvider value={dark}>
-      <div css={[dark && tw`bg-gray-900`]}>
+    <DefaultContext.Provider value={variant}>
+      <div css={[variant === "dark" && tw`bg-gray-900`]}>
         <div tw="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div tw="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
             <AboutCompany name={name}>{description}</AboutCompany>
@@ -164,7 +176,7 @@ const Footer = ({ company, name, description, categories, dark }) => {
           <FooterEnd name={company} />
         </div>
       </div>
-    </BoolProvider>
+    </DefaultContext.Provider>
   );
 };
 
@@ -173,7 +185,7 @@ Footer.propTypes = {
   description: PropTypes.node,
   company: PropTypes.string,
   categories: PropTypes.object,
-  dark: PropTypes.bool,
+  variant: PropTypes.string,
 };
 
 export default Footer;
