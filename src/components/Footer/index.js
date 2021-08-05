@@ -179,18 +179,20 @@ const Footer = ({ company, name, description, categories, variant }) => {
         <div tw="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div tw="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
             {name && <AboutCompany name={name}>{description}</AboutCompany>}
-            <div tw="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4 text-left">
-              {Object.keys(categories).map((category) => (
-                <div key={category}>
-                  <Title>{category}</Title>
-                  <ul tw="mt-2 space-y-2">
-                    {categories[category].map((item, index) => (
-                      <Item key={index}>{item.name}</Item>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            {categories && (
+              <div tw="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4 text-left">
+                {Object.keys(categories).map((category) => (
+                  <div key={category}>
+                    <Title>{category}</Title>
+                    <ul tw="mt-2 space-y-2">
+                      {categories[category].map((item, index) => (
+                        <Item key={index}>{item.name}</Item>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <FooterEnd name={company} />
         </div>
