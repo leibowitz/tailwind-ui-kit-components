@@ -8,6 +8,7 @@ import InstagramSvg from "~/static/instagram.svg";
 import FacebookSvg from "~/static/facebook.svg";
 import CurveSvg from "~/static/curve.svg";
 import DefaultContext from "./context";
+import Subscribe from "./Subscribe";
 
 const Title = ({ children }) => {
   const variant = useContext(DefaultContext);
@@ -193,6 +194,7 @@ const Footer = ({ company, name, description, categories, variant }) => {
                 ))}
               </div>
             )}
+            {!name && <Subscribe />}
           </div>
           <FooterEnd name={company} />
         </div>
