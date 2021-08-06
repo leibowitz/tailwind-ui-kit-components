@@ -77,6 +77,20 @@ SocialLink.propTypes = {
   children: PropTypes.node,
 };
 
+const SocialLinks = () => (
+  <div tw="flex items-center mt-4 space-x-4 sm:mt-0">
+    <SocialLink>
+      <TwitterSvg tw="h-5" />
+    </SocialLink>
+    <SocialLink>
+      <InstagramSvg tw="h-6" />
+    </SocialLink>
+    <SocialLink>
+      <FacebookSvg tw="h-5" />
+    </SocialLink>
+  </div>
+);
+
 const FooterEnd = ({ name }) => {
   const variant = useContext(DefaultContext);
   return (
@@ -91,17 +105,7 @@ const FooterEnd = ({ name }) => {
       >
         © Copyright 2021 {name} All rights reserved.
       </p>
-      <div tw="flex items-center mt-4 space-x-4 sm:mt-0">
-        <SocialLink>
-          <TwitterSvg tw="h-5" />
-        </SocialLink>
-        <SocialLink>
-          <InstagramSvg tw="h-6" />
-        </SocialLink>
-        <SocialLink>
-          <FacebookSvg tw="h-5" />
-        </SocialLink>
-      </div>
+      <SocialLinks />
     </div>
   );
 };
