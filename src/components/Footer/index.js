@@ -10,6 +10,7 @@ import CurveSvg from "~/static/curve.svg";
 import DefaultContext from "./context";
 import Subscribe from "./Subscribe";
 import Contacts from "./Contacts";
+import Header from "./Header";
 
 const Title = ({ children }) => {
   const variant = useContext(DefaultContext);
@@ -91,7 +92,7 @@ const SocialLinks = () => (
   </div>
 );
 
-const FooterEnd = ({ name }) => {
+const FooterEnd = ({ name, social }) => {
   const variant = useContext(DefaultContext);
   return (
     <div tw="flex flex-col justify-between pt-5 pb-10 border-t sm:flex-row">
@@ -105,13 +106,14 @@ const FooterEnd = ({ name }) => {
       >
         © Copyright 2021 {name} All rights reserved.
       </p>
-      <SocialLinks />
+      {social && <SocialLinks />}
     </div>
   );
 };
 
 FooterEnd.propTypes = {
   name: PropTypes.string,
+  social: PropTypes.bool,
 };
 
 const CompanyLink = ({ name }) => {
@@ -215,8 +217,14 @@ const Footer = ({
             )}
             {subscribe && <Subscribe>{subscribe}</Subscribe>}
             {contact && <Contacts {...contact} />}
+            {contact && (
+              <div>
+                <Header>Social</Header>
+                <SocialLinks />
+              </div>
+            )}
           </div>
-          <FooterEnd name={company} />
+          <FooterEnd name={company} social={!contact} />
         </div>
       </div>
     </DefaultContext.Provider>
