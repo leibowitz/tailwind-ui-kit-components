@@ -3,21 +3,13 @@ import PropTypes from "prop-types";
 import tw from "twin.macro";
 
 import DefaultContext from "./context";
+import Header from "./Header";
 
 const Contacts = ({ email, phone, address }) => {
   const variant = useContext(DefaultContext);
   return (
     <div tw="space-y-2 text-sm">
-      <p
-        css={[
-          tw`text-base font-bold tracking-wide`,
-          variant === "default" && tw`text-gray-800`,
-          variant === "dark" && tw`text-gray-300`,
-          variant === "accent" && tw`text-gray-300`,
-        ]}
-      >
-        Contacts
-      </p>
+      <Header>Contacts</Header>
       <div tw="flex">
         <p
           css={[
